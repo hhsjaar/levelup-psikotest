@@ -44,5 +44,6 @@ on conflict (access_code) do nothing;\n`
 
 writeFileSync(join(root, 'supabase/seed.sql'), out)
 const schema = readFileSync(join(root, 'supabase/schema.sql'), 'utf8')
-writeFileSync(join(root, 'supabase/setup.sql'), `${schema}\n\n${out}`)
+const agent = readFileSync(join(root, 'supabase/agent.sql'), 'utf8')
+writeFileSync(join(root, 'supabase/setup.sql'), `${schema}\n\n${agent}\n\n${out}`)
 console.log(`OK: ${dimensions.length} dimensi, ${questionBank.length} soal → supabase/seed.sql & supabase/setup.sql`)

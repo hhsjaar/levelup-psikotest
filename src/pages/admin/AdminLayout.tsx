@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { BarChart3, ClipboardList, FileQuestion, LayoutDashboard, LogOut, Menu, Microscope, SlidersHorizontal, Users, X } from 'lucide-react'
+import { BarChart3, Bot, ClipboardList, FileQuestion, LayoutDashboard, LogOut, Menu, Microscope, SlidersHorizontal, Users, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { NavLink, Navigate, Outlet, useLocation } from 'react-router-dom'
 import { Logo, PageLoader } from '../../components/ui'
@@ -13,6 +13,7 @@ const NAV = [
   { to: '/admin/results', label: 'Hasil Peserta', icon: Users },
   { to: '/admin/analytics', label: 'Analisis Soal', icon: Microscope },
   { to: '/admin/dimensions', label: 'Aspek & Norma', icon: SlidersHorizontal },
+  { to: '/admin/integrations', label: 'Integrasi Agen AI', icon: Bot },
 ]
 
 export default function AdminLayout() {

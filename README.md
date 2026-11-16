@@ -58,6 +58,14 @@ Dasar penyusunan soal: format Tes Intelegensi Umum (sinonim, antonim, analogi, d
 
 Peserta: buka `/t/DEMO2026`.
 
+### Integrasi Agen AI (WhatsApp)
+Levelup AI Agent dapat mengelola psikotes lewat `POST /api/agent` (`{"action": "...", "args": {...}}`, header `Authorization: Bearer lvpt_…`).
+1. Jalankan `supabase/agent.sql` di SQL Editor (sudah termasuk di `setup.sql` untuk instalasi baru).
+2. Panel Admin → **Integrasi Agen AI** → Buat Token → salin `PSIKOTEST_URL` & `PSIKOTEST_AGENT_TOKEN` ke environment agen.
+
+Aksi: `info`, `tests_list`, `test_get`, `test_create`, `test_update`, `test_delete`, `invite`, `results_list`, `result_get`, `result_update`, `result_delete`, `result_rescore`, `questions_list`, `question_get`, `question_create`, `question_update`, `question_delete`.
+Token disimpan sebagai hash dan bisa dicabut kapan saja. Link undangan mendukung prefill: `/t/KODE?nama=…&wa=…&posisi=…`.
+
 ### Mengubah bank soal bawaan
 Edit `src/data/bank/*.js` lalu jalankan `npm run build:sql` untuk membuat ulang `supabase/seed.sql` & `supabase/setup.sql`. Atau gunakan tombol **Impor Bawaan** di menu Bank Soal.
 

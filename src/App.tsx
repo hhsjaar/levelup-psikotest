@@ -16,6 +16,7 @@ const Results = lazy(() => import('./pages/admin/Results'))
 const ResultDetail = lazy(() => import('./pages/admin/ResultDetail'))
 const Analytics = lazy(() => import('./pages/admin/Analytics'))
 const DimensionsPage = lazy(() => import('./pages/admin/Dimensions'))
+const Integrations = lazy(() => import('./pages/admin/Integrations'))
 
 export default function App() {
   return (
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="results/:id" element={<ResultDetail />} />
           <Route path="analytics" element={<Analytics />} />
           <Route path="dimensions" element={<DimensionsPage />} />
+          <Route path="integrations" element={<Integrations />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

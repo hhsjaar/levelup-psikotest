@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { AlertCircle, ArrowRight, CheckCircle2, Clock, ListChecks, PlayCircle, ShieldAlert, Wifi } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { toast } from 'sonner'
 import { Button, Card, Field, Input, Logo, PageLoader, Select } from '../../components/ui'
 import { errMsg, supabase } from '../../lib/supabase'
@@ -22,7 +22,11 @@ export default function TestEntry() {
   const nav = useNavigate()
   const [test, setTest] = useState<any>(null)
   const [error, setError] = useState('')
-  const [form, setForm] = useState<Record<string, string>>({})
+  const [sp] = useSearchParams()
+  // Prefill dari link undangan (mis. dikirim agen WhatsApp): ?nama=&wa=&email=&posisi=
+  const [form, setForm] = useState<Record<string, string>>(() => Object.fromEntries(
+    ([['name', 'nama'], ['phone', 'wa'], ['email', 'email'], ['position', 'posisi']] as const)
+      .map(([k, q]) => [k, (sp.get(q) || '').slice(0, 120)]).filter(([, v]) => v)))
   const [agree, setAgree] = useState(false)
   const [busy, setBusy] = useState(false)
   const storeKey = `psikotest:${code.toUpperCase()}`
